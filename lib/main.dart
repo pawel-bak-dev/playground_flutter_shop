@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:playground_flutter_shop/screens/products_overview_screen.dart';
 import 'package:playground_flutter_shop/screens/product_details_screen.dart';
+import 'package:playground_flutter_shop/providers/products.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,31 +14,34 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Shop App',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-        colorScheme: ColorScheme(
-          primary: Colors.purple,
-          primaryVariant: Colors.purpleAccent,
-          secondary: Colors.deepOrange,
-          secondaryVariant: Colors.deepOrangeAccent,
-          surface: Colors.white,
-          background: Colors.white,
-          error: Colors.red,
-          onPrimary: Colors.white,
-          onSecondary: Colors.white,
-          onSurface: Colors.black,
-          onBackground: Colors.black,
-          onError: Colors.white,
-          brightness: Brightness.light,
+    return ChangeNotifierProvider(
+      create: (ctx) => Products(),
+      child: MaterialApp(
+        title: 'Shop App',
+        theme: ThemeData(
+          primarySwatch: Colors.purple,
+          colorScheme: ColorScheme(
+            primary: Colors.purple,
+            primaryVariant: Colors.purpleAccent,
+            secondary: Colors.deepOrange,
+            secondaryVariant: Colors.deepOrangeAccent,
+            surface: Colors.white,
+            background: Colors.white,
+            error: Colors.red,
+            onPrimary: Colors.white,
+            onSecondary: Colors.white,
+            onSurface: Colors.black,
+            onBackground: Colors.black,
+            onError: Colors.white,
+            brightness: Brightness.light,
+          ),
+          fontFamily: 'Lato',
         ),
-        fontFamily: 'Lato',
+        home: ProductOverviewScreen(),
+        routes: {
+          ProductDetailsScreen.routeName: (ctx) => ProductDetailsScreen(),
+        },
       ),
-      home: ProductOverviewScreen(),
-      routes: {
-        ProductDetailsScreen.routeName: (ctx) => ProductDetailsScreen(),
-      },
     );
   }
 }
