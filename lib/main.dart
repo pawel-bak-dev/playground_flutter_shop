@@ -6,6 +6,7 @@ import 'package:playground_flutter_shop/screens/product_details_screen.dart';
 import 'package:playground_flutter_shop/screens/cart_screen.dart';
 import 'package:playground_flutter_shop/providers/products.dart';
 import 'package:playground_flutter_shop/providers/cart.dart';
+import 'package:playground_flutter_shop/providers/orders.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,12 +25,15 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => Cart(),
         ),
+        ChangeNotifierProvider(
+          create: (ctx) => Orders(),
+        ),
       ],
       child: MaterialApp(
         title: 'Shop App',
         theme: ThemeData(
           primarySwatch: Colors.purple,
-          colorScheme: ColorScheme(
+          colorScheme: const ColorScheme(
             primary: Colors.purple,
             primaryVariant: Colors.purpleAccent,
             secondary: Colors.deepOrange,
