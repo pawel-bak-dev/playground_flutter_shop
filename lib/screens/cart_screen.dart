@@ -7,6 +7,8 @@ import 'package:playground_flutter_shop/widgets/cart_item.dart'
 import 'package:playground_flutter_shop/providers/orders.dart';
 
 class CartScreen extends StatelessWidget {
+  const CartScreen({Key? key}) : super(key: key);
+
   static const routeName = '/cart';
 
   @override
